@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>menu</class>
+ <widget class="QMainWindow" name="menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>782</width>
+    <height>175</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <widget class="smart_calc" name="Calc_Graph"/>
+      <widget class="credit" name="Credit_calc"/>
+      <widget class="deposit" name="Deposit_calc"/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>782</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="Widgets">
+    <property name="title">
+     <string>Widgets</string>
+    </property>
+    <addaction name="Calculator"/>
+    <addaction name="Graph"/>
+    <addaction name="Credit"/>
+    <addaction name="Deposit"/>
+   </widget>
+   <addaction name="Widgets"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="Calculator">
+   <property name="text">
+    <string>Calculator</string>
+   </property>
+  </action>
+  <action name="Graph">
+   <property name="text">
+    <string>Graph</string>
+   </property>
+  </action>
+  <action name="Credit">
+   <property name="text">
+    <string>Credit</string>
+   </property>
+  </action>
+  <action name="Deposit">
+   <property name="text">
+    <string>Deposit</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>smart_calc</class>
+   <extends>QWidget</extends>
+   <header>smart_calc.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>credit</class>
+   <extends>QWidget</extends>
+   <header>credit.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>deposit</class>
+   <extends>QWidget</extends>
+   <header>deposit.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

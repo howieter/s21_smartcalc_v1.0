@@ -1,0 +1,81 @@
+#include "s21_smart_calc.h"
+
+#test polish_note_1
+const char* str = "15 + 5 - 2";
+long double ref = 15 + 5 - 2;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_2
+const char* str = "15 + 5 * 2";
+long double ref = 15 + 5 * 2;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_3
+const char* str = "15 + 5 - 2 + 10 - 8 + 11 - 21 * 3 + 3";
+long double ref = 15 + 5 - 2 + 10 - 8 + 11 - 21 * 3 + 3;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_4
+const char* str = "1.5 + 12.3 - 11.9 + 654.87 * 2.5 / 3";
+long double ref = 1.5 + 12.3 - 11.9 + 654.87 * 2.5 / 3;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_5
+const char* str = "12 - 6 ^ 2 * 1.5 + 2.28";
+long double ref = 12 - pow(6, 2) * 1.5 + 2.28;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_6
+const char* str = "24 / 6 + 12 - 6 ^ 2 * 1.5 + 2.28";
+long double ref = 24 / 6 + 12 - pow(6, 2) * 1.5 + 2.28;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_7
+const char* str = "13.37 + 7.44 * 4 + -35 / 16.0 - -5";
+long double ref = 13.37 + 7.44 * 4 + -35 / 16.0 - -5;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_8
+const char* str = "2 + (3 - 1) + 4";
+long double ref = 2 + (3 - 1) + 4;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_9
+const char* str = "2 + (3 - 4 / 2 + 1) + 4";
+long double ref = 2 + (3 - 4 / 2 + 1) + 4;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_10
+const char* str = "13.37 + 7.44 * 4 - (13 * 2 - 61.13 / 2) + -35 / 16 - -5";
+long double ref = 13.37 + 7.44 * 4 - (13 * 2 - 61.13 / 2) + -35 / 16 - -5;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_11
+const char* str = "cos(5)";
+long double ref = cos(5);
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_12
+const char* str = "cos(13 * 2 - 61.13 / 2)";
+long double ref = cos(13 * 2 - 61.13 / 2);
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_13
+const char* str = "13.37 + 7.44 * 4 - cos(13 * 2 - 61.13 / 2) + -35 / 16 - -5";
+long double ref = 13.37 + 7.44 * 4 - cos(13 * 2 - 61.13 / 2) + -35 / 16 - -5;
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_14
+const char* str = "-cos(13 * 2 - 61.13 / 2) + acos(0.5) * sin(1) - ln(23 + 12) / (13 - 11) + log(2 ^ 2 ^ 2)";
+long double ref = -cos(13 * 2 - 61.13 / 2) + acos(0.5) * sin(1) - log(23 + 12) / (13 - 11) + log10(16);
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_15
+const char* str = "3 % 2 + (3159 + 12.4 * 2 ^ 6 / 2.5) ^ -(124.9 * tan(12))";
+long double ref = 3 % 2 + pow(3159 + 12.4 * pow(2, 6) / 2.5, -(124.9 * tan(12)));
+ck_assert_int_eq(ref, parser(&str));
+
+#test polish_note_16
+const char* str = "-cos(cos(cos(9)))";
+long double ref = -cos(cos(cos(9)));
+ck_assert_int_eq(ref, parser(&str));
